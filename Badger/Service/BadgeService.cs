@@ -1,5 +1,5 @@
-﻿using Badger.Model;
-using SkiaSharp;
+﻿using SkiaSharp;
+using Badger.Model;
 
 namespace Badger.Service
 {
@@ -17,14 +17,14 @@ namespace Badger.Service
             return new SKPaint { IsAntialias = true, IsStroke = false, Color = SKColors.White, TextSize = badge.Height - GetTopBottomMargin()*2 };
         }
 
-        private SKPaint GetResultBackgroundPaint()
+        private SKPaint GetResultBackgroundPaint(BadgeModel badge)
         {
-            return new SKPaint { IsAntialias = true, IsStroke = false, Color = SKColors.Green };
+            return new SKPaint { IsAntialias = true, IsStroke = false, Color = badge.ResultBackgroundColor };
         }
 
-        private SKPaint GetLabelBackgroundPaint()
+        private SKPaint GetLabelBackgroundPaint(BadgeModel badge)
         {
-            return new SKPaint { IsAntialias = true, IsStroke = false, Color = SKColors.DarkGray };
+            return new SKPaint { IsAntialias = true, IsStroke = false, Color = badge.LabelBackgroundColor};
         }
 
         private int GetOuterMargin() => 10;
@@ -66,7 +66,7 @@ namespace Badger.Service
                 0,
                 w: leftSideWidth,
                 h: badge.Height,
-                paint: this.GetLabelBackgroundPaint()
+                paint: this.GetLabelBackgroundPaint(badge)
                 );
 
             /* draw right background */
@@ -75,7 +75,7 @@ namespace Badger.Service
                 0,
                 w: innerMargin + textPaint.MeasureText(badge.Result) + outerMargin,
                 h: badge.Height,
-                paint: this.GetResultBackgroundPaint()
+                paint: this.GetResultBackgroundPaint(badge)
                 );
 
             /* write left text */

@@ -22,8 +22,9 @@ namespace Badger.Factory
                 p.Action = ActionType.CreateImage;
             });
             options.Add("l=|label", "the label of badge (left-side)", s => { p.Label = s; });
+            options.Add("lc=|label-color", "the background color of the left-side", s => { p.LabelColor = s; });
             options.Add("r=|result", "the result of badge (right-side)", s => { p.Result = s; });
-            options.Add("c=|result-color", "the background color of the right-side", s => { p.ResultColor = s; });
+            options.Add("rc=|result-color", "the background color of the right-side", s => { p.ResultColor = s; });
             options.Add("h=|height", "the height of the badge", s => { if (int.TryParse(s, out int height)) p.Height = height; });
 
             options.Parse(args);

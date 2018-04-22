@@ -11,6 +11,7 @@
         public string Label { get; set; }
         public string Result { get; set; }
         public string ResultColor { get; set; }
+        public string LabelColor { get; set; }
 
         public int Height { get; set; }
 
@@ -25,6 +26,8 @@
             this.OutputFileFormat = OutputFileFormat.Svg;
             this.Action = ActionType.ShowHelp;
             this.Height = 22;
+            this.LabelColor  = "#ccccccff";
+            this.ResultColor = "#00ff00ff";
         }
     }
 }
