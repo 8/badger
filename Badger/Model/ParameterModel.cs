@@ -12,9 +12,19 @@
         public string Result { get; set; }
         public string ResultColor { get; set; }
 
+        public int Height { get; set; }
+
         public string OutputFile { get; set; }
         public OutputFileFormat OutputFileFormat { get; set; }
 
         public string HelpText { get; set; }
+
+        public ParameterModel()
+        {
+            this.OutputFile = "out.svg";
+            this.OutputFileFormat = OutputFileFormat.Svg;
+            this.Action = ActionType.ShowHelp;
+            this.Height = 22;
+        }
     }
 }

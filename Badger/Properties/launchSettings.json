@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Badger": {
+      "commandName": "Project",
+      "commandLineArgs": "-l build -r passing"
+    }
+  }
+}

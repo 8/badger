@@ -43,11 +43,9 @@ namespace Badger
             switch (p.OutputFileFormat)
             {
                 case OutputFileFormat.Svg:
-                    //this.SvgService.
+                    this.SvgService.Draw(p);
                     break;
             }
         }
-
-        
     }
 }

@@ -16,7 +16,7 @@ namespace Badger.Factory
             var options = new OptionSet();
             var p = new ParameterModel();
 
-            options.Add("h|help", "shows this help", s => p.Action = ActionType.ShowHelp);
+            options.Add("?|help", "shows this help", s => p.Action = ActionType.ShowHelp);
             options.Add("o=|output-file", "the output file to write to", s => {
                 p.OutputFile = s;
                 p.Action = ActionType.CreateImage;
@@ -24,9 +24,16 @@ namespace Badger.Factory
             options.Add("l=|label", "the label of badge (left-side)", s => { p.Label = s; });
             options.Add("r=|result", "the result of badge (right-side)", s => { p.Result = s; });
             options.Add("c=|result-color", "the background color of the right-side", s => { p.ResultColor = s; });
+            options.Add("h=|height", "the height of the badge", s => { if (int.TryParse(s, out int height)) p.Height = height; });
 
             options.Parse(args);
 
+            /* actiontype is automatically used when label and result is supplied */
+            if (!string.IsNullOrWhiteSpace(p.Label)
+             && !string.IsNullOrWhiteSpace(p.Result))
+                p.Action = ActionType.CreateImage;
+
+            /* set help text */
             StringWriter sw = new StringWriter();
             options.WriteOptionDescriptions(sw);
             p.HelpText = sw.ToString();
