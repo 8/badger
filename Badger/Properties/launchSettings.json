@@ -2,7 +2,7 @@
   "profiles": {
     "Badger": {
       "commandName": "Project",
-      "commandLineArgs": "-l build -r failed -lc #333333ff -rc #ff0000ff"
+      "commandLineArgs": "-l build -r failed -lc #555555ff -rc #ff0000ff"
     }
   }
 }

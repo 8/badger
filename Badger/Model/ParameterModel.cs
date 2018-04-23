@@ -26,7 +26,7 @@
             this.OutputFileFormat = OutputFileFormat.Svg;
             this.Action = ActionType.ShowHelp;
             this.Height = 22;
-            this.LabelColor  = "#ccccccff";
+            this.LabelColor  = "#333333ff";
             this.ResultColor = "#00ff00ff";
         }
     }
