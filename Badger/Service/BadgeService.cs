@@ -17,6 +17,13 @@ namespace Badger.Service
             return new SKPaint { IsAntialias = true, IsStroke = false, Color = SKColors.White, TextSize = badge.Height - GetTopBottomMargin()*2 };
         }
 
+        private SKPaint GetTextShadowPaint(BadgeModel badge)
+        {
+            var paint = this.GetTextPaint(badge);
+            paint.Color = new SKColor(0x33, 0x33, 0x33, 0xff);
+            return paint;
+        }
+
         private SKPaint GetResultBackgroundPaint(BadgeModel badge)
         {
             return new SKPaint { IsAntialias = true, IsStroke = false, Color = badge.ResultBackgroundColor };
@@ -72,10 +79,15 @@ namespace Badger.Service
             canvas.DrawRect(leftSideWidth, 0, corner, badge.Height, resultBackgroundPaint);
 
             /* write left text */
+            var textShadowPaint = this.GetTextShadowPaint(badge);
+            float shadowFactor = 1.05f;
+            canvas.DrawText(badge.Label, outerMargin, textY * shadowFactor, textShadowPaint);
             canvas.DrawText(badge.Label, outerMargin, textY, textPaint);
 
             /* write right text */
-            canvas.DrawText(badge.Result, x: leftSideWidth + innerMargin, y: textY, paint: textPaint);
+            float rightTextX = leftSideWidth + innerMargin;
+            canvas.DrawText(badge.Result, x: rightTextX, y: textY * shadowFactor, paint: textShadowPaint);
+            canvas.DrawText(badge.Result, x: rightTextX, y: textY, paint: textPaint);
         }
     }
 }
