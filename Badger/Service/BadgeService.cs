@@ -37,7 +37,7 @@ namespace Badger.Service
         private int GetOuterMargin(BadgeModel badge) => badge.Height / 2;
         private int GetInnerMargin(BadgeModel badge) => badge.Height / 4;
         private int GetTopBottomMargin(BadgeModel badge) => badge.Height / 5;
-        private int GetCorner(BadgeModel badge) => badge.Height / 5;
+        private int GetCornerRadius(BadgeModel badge) => badge.Height / 5;
 
         public float GetWidth(BadgeModel badge)
         {
@@ -67,17 +67,17 @@ namespace Badger.Service
             float leftSideWidth = outerMargin + leftTextWidth + innerMargin;
             float topBottomMargin = this.GetTopBottomMargin(badge);
             float textY = badge.Height / 2 + textPaint.FontMetrics.Bottom;
-            float corner = GetCorner(badge);
+            float cornerRadius = GetCornerRadius(badge);
 
             /* draw left background */
             var labelBackgroundPaint = this.GetLabelBackgroundPaint(badge);
-            canvas.DrawRoundRect(0, 0, leftSideWidth, badge.Height, corner, corner, labelBackgroundPaint);
-            canvas.DrawRect(leftSideWidth - corner, 0, corner, badge.Height, labelBackgroundPaint);
+            canvas.DrawRoundRect(0, 0, leftSideWidth, badge.Height, cornerRadius, cornerRadius, labelBackgroundPaint);
+            canvas.DrawRect(leftSideWidth - cornerRadius, 0, cornerRadius, badge.Height, labelBackgroundPaint);
 
             /* draw right background */
             var resultBackgroundPaint = this.GetResultBackgroundPaint(badge);
-            canvas.DrawRoundRect(leftSideWidth, 0,  innerMargin + textPaint.MeasureText(badge.Result) + outerMargin, badge.Height, corner, corner, resultBackgroundPaint);
-            canvas.DrawRect(leftSideWidth, 0, corner, badge.Height, resultBackgroundPaint);
+            canvas.DrawRoundRect(leftSideWidth, 0,  innerMargin + textPaint.MeasureText(badge.Result) + outerMargin, badge.Height, cornerRadius, cornerRadius, resultBackgroundPaint);
+            canvas.DrawRect(leftSideWidth, 0, cornerRadius, badge.Height, resultBackgroundPaint);
 
             /* write left text */
             var textShadowPaint = this.GetTextShadowPaint(badge);
