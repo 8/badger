@@ -14,7 +14,7 @@ namespace Badger.Service
     {
         private SKPaint GetTextPaint(BadgeModel badge)
         {
-            return new SKPaint { IsAntialias = true, IsStroke = false, Color = SKColors.White, TextSize = badge.Height - GetTopBottomMargin()*2 };
+            return new SKPaint { IsAntialias = true, IsStroke = false, Color = SKColors.White, TextSize = badge.Height - GetTopBottomMargin(badge)*2 };
         }
 
         private SKPaint GetTextShadowPaint(BadgeModel badge)
@@ -34,16 +34,17 @@ namespace Badger.Service
             return new SKPaint { IsAntialias = true, IsStroke = false, Color = badge.LabelBackgroundColor};
         }
 
-        private int GetOuterMargin() => 10;
-        private int GetInnerMargin() => 5;
-        private int GetTopBottomMargin() => 4;
+        private int GetOuterMargin(BadgeModel badge) => badge.Height / 2;
+        private int GetInnerMargin(BadgeModel badge) => badge.Height / 4;
+        private int GetTopBottomMargin(BadgeModel badge) => badge.Height / 5;
+        private int GetCorner(BadgeModel badge) => badge.Height / 5;
 
         public float GetWidth(BadgeModel badge)
         {
             var paint = GetTextPaint(badge);
 
-            int outerMargin = GetOuterMargin(),
-                innerMargin = GetInnerMargin();
+            int outerMargin = GetOuterMargin(badge),
+                innerMargin = GetInnerMargin(badge);
 
             var width = outerMargin
                       + paint.MeasureText(badge.Label)
@@ -60,13 +61,13 @@ namespace Badger.Service
             canvas.Clear();
 
             var textPaint = this.GetTextPaint(badge);
-            float outerMargin = this.GetOuterMargin(),
-                  innerMargin = this.GetInnerMargin();
+            float outerMargin = this.GetOuterMargin(badge),
+                  innerMargin = this.GetInnerMargin(badge);
             float leftTextWidth = textPaint.MeasureText(badge.Label);
             float leftSideWidth = outerMargin + leftTextWidth + innerMargin;
-            float topBottomMargin = this.GetTopBottomMargin();
+            float topBottomMargin = this.GetTopBottomMargin(badge);
             float textY = badge.Height / 2 + textPaint.FontMetrics.Bottom;
-            float corner = 4;
+            float corner = GetCorner(badge);
 
             /* draw left background */
             var labelBackgroundPaint = this.GetLabelBackgroundPaint(badge);
