@@ -62,13 +62,14 @@ namespace Badger.Service
             float corner = 4;
 
             /* draw left background */
-            canvas.DrawRoundRect(0, 0, leftSideWidth, badge.Height, corner, corner, this.GetLabelBackgroundPaint(badge));
-            canvas.DrawRect(leftSideWidth - corner, 0, corner, badge.Height, this.GetLabelBackgroundPaint(badge));
+            var labelBackgroundPaint = this.GetLabelBackgroundPaint(badge);
+            canvas.DrawRoundRect(0, 0, leftSideWidth, badge.Height, corner, corner, labelBackgroundPaint);
+            canvas.DrawRect(leftSideWidth - corner, 0, corner, badge.Height, labelBackgroundPaint);
 
             /* draw right background */
-            var backgroundPaint = this.GetResultBackgroundPaint(badge);
-            canvas.DrawRoundRect(leftSideWidth, 0,  innerMargin + textPaint.MeasureText(badge.Result) + outerMargin, badge.Height, corner, corner, backgroundPaint);
-            canvas.DrawRect(leftSideWidth, 0, corner, badge.Height, backgroundPaint);
+            var resultBackgroundPaint = this.GetResultBackgroundPaint(badge);
+            canvas.DrawRoundRect(leftSideWidth, 0,  innerMargin + textPaint.MeasureText(badge.Result) + outerMargin, badge.Height, corner, corner, resultBackgroundPaint);
+            canvas.DrawRect(leftSideWidth, 0, corner, badge.Height, resultBackgroundPaint);
 
             /* write left text */
             canvas.DrawText(badge.Label, outerMargin, textY, textPaint);
