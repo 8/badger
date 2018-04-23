@@ -58,7 +58,7 @@ namespace Badger.Service
             float leftTextWidth = textPaint.MeasureText(badge.Label);
             float leftSideWidth = outerMargin + leftTextWidth + innerMargin;
             float topBottomMargin = this.GetTopBottomMargin();
-            float textY = badge.Height - topBottomMargin / 2 - textPaint.FontMetrics.Descent;
+            float textY = badge.Height / 2 + textPaint.FontMetrics.Bottom;
             float corner = 4;
 
             /* draw left background */
