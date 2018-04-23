@@ -33,6 +33,7 @@ namespace Badger
                     break;
 
                 case ActionType.CreateImage:
+                    Console.WriteLine($"writing file '{p.OutputFile}'");
                     this.CreateImage(p);
                     break;
             }
