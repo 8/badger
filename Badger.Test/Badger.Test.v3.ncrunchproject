@@ -1,0 +1,7 @@
+﻿<ProjectConfiguration>
+  <Settings>
+    <BuildProcessArchitecture>x86</BuildProcessArchitecture>
+    <UseBuildPlatform>x64</UseBuildPlatform>
+    <UseCPUArchitecture>AutoDetect</UseCPUArchitecture>
+  </Settings>
+</ProjectConfiguration>

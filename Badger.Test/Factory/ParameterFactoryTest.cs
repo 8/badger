@@ -23,7 +23,7 @@ namespace Badger.Test.Factory
             var factory = GetFactory();
 
             /* act */
-            var result = factory.GetParameter("-o test.svg -l build -r passing".Split(" "));
+            var result = factory.GetParameter("-o test.svg -l build -r passing".Split(' '));
 
             /* assert */
             result.Should().NotBeNull();

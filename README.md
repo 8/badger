@@ -3,7 +3,7 @@ _badger_ is a very simple commandline tool to create svg badges.
 
 ## Usage
 ```
-dotnet Badger.dll --help
+badger --help
   -?, --help                 shows this help
   -o, --output-file=VALUE    the output file to write to
   -l, --label=VALUE          the label of badge (left-side)
@@ -19,14 +19,14 @@ dotnet Badger.dll --help
 Executing the command:
 
 ```batch
-dotnet Badger.dll -o result-success.svg -l "Testresults" -r "100/100" --lc #444444ff --rc #00ff00ff
+badger.exe -o result-success.svg -l "Testresults" -r "100/100" --lc #444444ff --rc #00ff00ff
 ```
 creates a file named `result-success.svg`, which looks like this:
 ![result-success.svg](./result-success.svg)
 
 While executing:
 ```batch
-dotnet Badger.dll -o result-error.svg -l "Testresults" -r "0/100" --lc #444444ff --rc #ff0000ff
+badger -o result-error.svg -l "Testresults" -r "0/100" --lc #444444ff --rc #ff0000ff
 ```
 creates the a file named `result-error.svg`, which looks like this:
 ![result-error.svg](./result-error.svg)
