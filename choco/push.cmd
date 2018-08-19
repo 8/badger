@@ -1,0 +1,1 @@
+choco push badger.1.0.0.nupkg -s https://push.chocolatey.org/
