@@ -5,6 +5,7 @@
     <TargetFramework>NET47</TargetFramework>
     <!--<RuntimeIdentifier>win7-x64</RuntimeIdentifier>-->
     <TargetLatestRuntimePatch>false</TargetLatestRuntimePatch>
+    <Version>1.0.0</Version>
     <AssemblyName>badger</AssemblyName>
   </PropertyGroup>
 

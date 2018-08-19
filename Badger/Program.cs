@@ -1,6 +1,7 @@
-﻿using Badger.Factory;
+﻿using System;
+using System.Reflection;
+using Badger.Factory;
 using Badger.Model;
-using System;
 using Badger.Service;
 
 namespace Badger
@@ -24,12 +25,31 @@ namespace Badger
             HandleParameters(p);
         }
 
+        private void WriteVersion()
+        {
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            Console.WriteLine($"badger v{version}");
+        }
+
+        private void WriteExampleUsage()
+        {
+            Console.WriteLine("Example usage:");
+            Console.WriteLine("\tbadger.exe -o result-success.svg -l \"Testresults\" -r \"100 / 100\" --lc #444444ff --rc #00ff00ff");
+        }
+
+        private void WriteHelp(ParameterModel p)
+        {
+            WriteVersion();
+            Console.WriteLine(p.HelpText);
+            WriteExampleUsage();
+        }
+
         private void HandleParameters(ParameterModel p)
         {
             switch (p.Action )
             {
                 case ActionType.ShowHelp:
-                    Console.WriteLine(p.HelpText);
+                    WriteHelp(p);
                     break;
 
                 case ActionType.CreateImage:
