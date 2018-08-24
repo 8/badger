@@ -1,6 +1,16 @@
 ﻿# README
 _badger_ is a very simple commandline tool to create svg badges.
 
+## Build from Source for Windows
+Execute `build.cmd` which compiles the badger using: `dotnet build -c Release`
+
+## Install on Windows using Chocolatey
+`choco install badger`
+Which also puts it on the PATH.
+
+You can uninstall it again using:
+`choco uninstall badger`
+
 ## Usage
 ```
 badger --help
